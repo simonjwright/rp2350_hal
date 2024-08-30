@@ -1,0 +1,21 @@
+name = "test"
+description = "Some simple IO to demonstrate functionality"
+version = "0.1.0-dev"
+
+authors = ["Simon Wright"]
+maintainers = ["Simon Wright <simon@pushface.org>"]
+maintainers-logins = ["simonjwright"]
+licenses = "BSD-3-Clause"
+website = ""
+tags = []
+
+executables = ["test"]
+
+[build-switches]
+"*".contracts = ["-gnataqQ"]
+
+[[depends-on]]
+rp2350_hal = "*"
+
+[[pins]]
+rp2350_hal = { path='..' }

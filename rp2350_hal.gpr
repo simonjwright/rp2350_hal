@@ -1,0 +1,30 @@
+with "hal";
+with "config/rp2350_hal_config.gpr";
+project RP2350_HAL is
+
+   for Library_Name use "rp2350_hal";
+   for Library_Version use
+     Project'Library_Name
+     & "."
+     & Rp2350_Hal_Config.Crate_Version;
+
+   for Source_Dirs use ("src/", "config/", "rp2350_svd");
+   for Object_Dir use "obj/" & Rp2350_Hal_Config.Build_Profile;
+   for Create_Missing_Dirs use "True";
+   for Library_Dir use "lib";
+   for Library_Kind use "static";
+
+   --  We don't specify the target or the runtime, leaving that to
+   --  the using project.
+
+   package Compiler is
+      for Default_Switches ("Ada") use
+        Rp2350_Hal_Config.Ada_Compiler_Switches
+        & ("-gnatqQafy", "-O0", "-g");
+   end Compiler;
+
+   package Install is
+      for Artifacts (".") use ("share");
+   end Install;
+
+end RP2350_HAL;

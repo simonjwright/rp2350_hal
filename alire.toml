@@ -1,0 +1,36 @@
+name = "rp2350_hal"
+description = "Hardware Access Layer for the Raspberry Pi 2350 chip."
+version = "0.1.0-dev"
+
+authors = ["Simon Wright"]
+maintainers = ["Simon Wright <simon@pushface.org>"]
+maintainers-logins = ["simonjwright"]
+licenses = "BSD-3-Clause"
+website = ""
+tags = ["embedded", "raspberry-pi", "pico2", "rp2350", "risc-v"]
+
+[[actions]]
+# generate source from the SVD
+directory = "."
+type = "post-fetch"
+command = [
+"svd2ada",
+"--output=rp2350_svd",
+"--package=RP2350",
+"svd/RP2350.svd.patched"
+]
+
+# [[actions]]
+# # remove incorrectly-generated source
+# directory = "."
+# type = "post-fetch"
+# command = [
+# "rm",
+# "rp32350_svd/esp32_h2-rmt.ads"
+# ]
+
+[gpr-set-externals]
+BUILD_MODE = "development"
+
+[[depends-on]]
+hal = "~0.4.0"
