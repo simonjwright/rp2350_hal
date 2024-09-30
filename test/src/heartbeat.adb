@@ -17,10 +17,6 @@
 --  <http://www.gnu.org/licenses/>.
 
 --  This is for the RP2350 Risc-V chip in the Pico 2 board.
---
---  It would have been great to use the on-board RGB LED, but its
---  access is apparently quite complex, so we use an ordinary LED
---  accessed via GPIO0.
 
 with Ada.Real_Time;
 with HAL.GPIO;
@@ -39,6 +35,8 @@ package body Heartbeat is
       use type Ada.Real_Time.Time;
       LED : GPIO_Point := (Pin => 25, others => <>);
    begin
+      Enable;
+
       Configure (LED, Mode => HAL.GPIO.Output);
       --  flash for 1 second at startup
       for J in 1 .. 5 loop

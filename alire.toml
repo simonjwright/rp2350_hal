@@ -20,17 +20,11 @@ command = [
 "svd/RP2350.svd.patched"
 ]
 
-# [[actions]]
-# # remove incorrectly-generated source
-# directory = "."
-# type = "post-fetch"
-# command = [
-# "rm",
-# "rp32350_svd/esp32_h2-rmt.ads"
-# ]
-
 [gpr-set-externals]
 BUILD_MODE = "development"
+
+[build-switches]
+"*".contracts = ["-gnataqQ"]
 
 [[depends-on]]
 hal = "~0.4.0"

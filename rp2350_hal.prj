@@ -1,4 +1,4 @@
-# Emacs ada-mode project file for ESP32H2_HAL.
+# Emacs ada-mode project file for RP2350_HAL.
 
 $HOME=/Users/simon
 
@@ -8,4 +8,4 @@ casing=$HOME/.emacs_case_exceptions
 #casing=emacs_case_exceptions
 
 target=riscv32-elf-
-$RUNTIME=$HOME/Developer/FreeRTOS-Ada/local/esp32h2
+$RUNTIME=$HOME/Developer/FreeRTOS-Ada/local/rp2350
